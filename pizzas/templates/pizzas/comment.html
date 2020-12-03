@@ -1,0 +1,19 @@
+<!-- The beginning of the child template must have an extends tag to tell django which parent template to inheriate from. -->
+{% extends "pizzas/base.html" %}
+
+<!-- Everything that we aren't inheriting from the parent template will go inside the content block. -->
+{% block content %}
+
+<!-- Shows the pizza at the top of the page, so the user can see which pizza they're commenting on. -->
+<p><a href="{% url 'pizzas:pizza' pizza.id %}">{{ pizza }}</a></p>
+
+<p>Add a comment:</p>
+<!-- The form's action argument includes the pizza_id value in the url, so the view function can associate the comment with the correct pizza. -->
+<form action="{% url 'pizzas:comment' pizza.id %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name='submit'>Add comment</button>
+</form>
+
+{% endblock content %}
+<!-- This indicates the we're finished defining the content in the block. -->

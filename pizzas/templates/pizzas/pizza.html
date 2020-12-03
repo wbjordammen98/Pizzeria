@@ -1,0 +1,37 @@
+<!-- The beginning of the child template must have an extends tag to tell django which parent template to inheriate from. -->
+{% extends "pizzas/base.html" %}
+
+{% block page_header %}
+<h3>{{ pizza }}</h3>
+{% endblock page_header %}
+
+<!-- Everything that we aren't inheriting from the parent template will go inside the content block. -->
+{% block content %}
+
+<!-- Show the pizza that is currently being displayed. -->
+<p>Pizza: {{ pizza }}</p>
+
+<p>Toppings:</p>
+<!-- Start of bulleted list to show each of the toppings. -->
+
+{% for topping in toppings %}
+<div class="card mb-3">
+<div class="card-body">
+    <!-- The linebreaks filter ensures that long text entries include line breaks in a format understood by browsers,
+        instead of showing a block of uninterrupted text. -->
+    {{ topping.text|linebreaks}}
+</div>
+</div>
+        
+{% empty %}
+    <p>There are no toppings for this pizza yet.</p>
+{% endfor %}
+
+<!-- Include a link to the comment page from each pizza page. -->
+<p>
+    <a href="{% url 'pizzas:comment' pizza.id %}">Add comment</a>
+</p>
+
+
+{% endblock content %}
+<!-- This indicates the we're finished defining the content in the block. -->

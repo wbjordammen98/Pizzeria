@@ -1,0 +1,28 @@
+<!-- The beginning of the child template must have an extends tag to tell django which parent template to inheriate from. -->
+{% extends "pizzas/base.html" %}
+
+{% block page_header %}
+<h1>Pizzas</h1>
+{% endblock page_header %}
+
+<!-- Everything that we aren't inheriting from the parent template will go inside the content block. -->
+{% block content %}
+
+<ul>
+    <!-- This loops through the list pizzas from the context dictionary. -->
+    {% for pizza in pizzas %}
+    <!-- Provides a link from the pizza page. -->
+    <li><h3>
+        <a href="{% url 'pizzas:pizza' pizza.id %}">{{ pizza }}</a>
+    </h3></li>
+    <!-- This code for pizza will be replaced by the value of pizza on each pass through the loop. -->
+    <!-- <li>{{ pizza }}</li> -->
+    <!-- This tells django what to do if there are no items in the list. -->
+    {% empty %}
+    <li><h3>No pizzas have been added yet.</h3></li>
+    <!-- This closes the for loop. -->
+    {% endfor %}
+</ul>
+
+{% endblock content %}
+<!-- This indicates the we're finished defining the content in the block. -->

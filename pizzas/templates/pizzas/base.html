@@ -1,0 +1,55 @@
+<!-- Load the collection of template tags available in bootstrap4. -->
+{% load bootstrap4 %}
+
+<!-- Declares the document as an HTML file. -->
+<!doctype html>
+<html lang="en">
+    <!-- The head of an HTML file tells the browser what it needs to know to display the page correctly. -->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1,
+        shrink-to-fit=no">
+
+        <!-- Displays the browser's title bar whenever Pizzeria is open. -->
+        <title>Pizzeria</title>
+        
+        <!-- One of bootstrap's template tags, which tells django to include all bootstrap style files. -->
+        {% bootstrap_css %}
+        {% bootstrap_javascript jquery='full' %}
+
+    </head>
+    <!-- Opens the body tag. -->
+    <body>
+        <!-- Indicates the page's navigation links section. -->
+        <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">
+            <!-- Sets the project's name to appear at the far left of the navigation bar and make it a link to the home page. -->
+            <a class="navbar-brand" href="{% url 'pizzas:index' %}">
+                Pizzeria</a>
+            <!-- Defines a button that appears if the browser window is too narrow to display the whole navigation bar horizontally. -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarCollapse" aria-controls="navbarCollapse"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span></button>
+            <!-- Opens a new section of the nav bar. Builds a web page by dividing it into sections and defining style and behavior rules that apply to that section. -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <!-- The only item in the list is our link to the Topics page. -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'pizzas:pizzas' %}">
+                            Pizzas</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Used for the most significant part of the body of a page. -->
+        <main role="main" class="container">
+            <!-- This block will be used to title most pages. -->
+            <div class="pb-2 mb-2 border-bottom">
+                {% block page_header %} {% endblock page_header %}
+            </div>
+            <!-- This div element contains the block element. -->
+            <div>
+                {% block content %} {% endblock content %}
+            </div>
+        </main>
+    </body>
+</html>

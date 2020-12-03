@@ -1,0 +1,18 @@
+<!-- Allows the user to see this built html page instead of the default django page.
+From the path function in the urls.py file in the pizzas app, Django will take the requested url and that url will match the pattern '',
+then django will call the function views.index() to render the page using the template below. -->
+
+<!-- The beginning of the child template must have an extends tag to tell django which parent template to inheriate from. -->
+{% extends "pizzas/base.html" %}
+
+<!-- Everything that we aren't inheriting from the parent template will go inside the content block. -->
+{% block page_header %}
+
+<div class="jumbotron">
+    <h1 class="display-3">Welcome to the Pizzeria!</h1>
+
+    <p class="lead">Take a look at what pizzas we have to offer, and the toppings that each pizza contains.</p>
+</div>
+
+{% endblock page_header %}
+<!-- This indicates the we're finished defining the content in the block. -->
