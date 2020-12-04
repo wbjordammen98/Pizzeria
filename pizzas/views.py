@@ -6,7 +6,7 @@ from .models import Pizza
 # Import the form associated with the comment insertion form. 
 from .forms import CommentForm
 
-# Create your views here.
+# Create your views here. View functions take in information from a request, prepares the data needed to generate a page, and then sends the data back to the browser.
 def index(request):
     # The home page for the pizzas app. 
     return render(request, 'pizzas/index.html')
@@ -23,6 +23,9 @@ def pizzas(request):
 
     # To build a page that uses data, pass the context variable to render, as well as the request object and the path to the template. 
     return render(request, 'pizzas/pizzas.html', context)
+
+# GET requests are for pages that only read data from the server.
+# POST requests are used when the user needs to submit information through a form. 
 
 def pizza(request,pizza_id):
     # Show a single pizza and all its toppings.
@@ -68,3 +71,5 @@ def comment(request,pizza_id):
     # Display a blank or invalid form. 
     context = {'pizza':pizza,'form':form}
     return render(request,'pizzas/comment.html',context)
+
+# The third phase consists of creating a view function for the form. The fourth phase requires you to create an html file in the templates.

@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+# Create your models here. A model encapsulates information about an entity and models it, then stores it in the database. 
 class Pizza(models.Model):
     # A pizza option for the pizzeria.
 
@@ -35,3 +35,8 @@ class Topping(models.Model):
     def __str__(self):
         # Return a string representation of the model of only the first 50 characters of a text.
         return f"{self.text[:50]}..."
+
+# Once you are finished defining your model, migrate the model using the following terminial commands:
+    # In an active venv, type: python manage.py makemigrations app_name (Pizzas)
+    # Next, type python manage.py migrate.
+    # Lastly, don't forget to register the model with the admin site in admin.py.

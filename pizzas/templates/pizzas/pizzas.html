@@ -18,7 +18,6 @@
         <a href="{% url 'pizzas:pizza' pizza.id %}">{{ pizza }}</a>
     </h3></li>
     <!-- This code for pizza will be replaced by the value of pizza on each pass through the loop. -->
-    <!-- <li>{{ pizza }}</li> -->
     <!-- This tells django what to do if there are no items in the list. -->
     {% empty %}
     <li><h3>No pizzas have been added yet.</h3></li>

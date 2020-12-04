@@ -11,10 +11,10 @@ app_name = 'pizzas'
 
 # This variable is a list of individual pages that can be requested from the pizzas app. 
 urlpatterns = [
-    # Home page
     # First argument is a string that helps django route to the current request properly. 
     # Second argument specifies which function to call in views.py. 
-    # Third argument provides the name 'index' for this url pattern so we can refer to it in other code sections.  
+    # Third argument provides the name for the url pattern so we can refer to it in other code sections.  
+    # Home page
     path('', views.index, name='index'),
     # Page that shows all pizzas.
     # Adds pizzas into the string argument used for the home page url. 
@@ -24,3 +24,5 @@ urlpatterns = [
     # Page for adding a comment on a pizza page.
     path('comment/<int:pizza_id>/',views.comment,name='comment'),
 ]
+
+# The second phase consists of defining a path for the form's url. The third phase takes place in views.py.

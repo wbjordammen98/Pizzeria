@@ -10,10 +10,15 @@
 <p>Add a comment:</p>
 <!-- The form's action argument includes the pizza_id value in the url, so the view function can associate the comment with the correct pizza. -->
 <form action="{% url 'pizzas:comment' pizza.id %}" method='post'>
+    <!-- The crf tag prevents attackers from using the form to gain unauthorized access to the server. -->
     {% csrf_token %}
+    <!-- This is the tag that displays the comment form. This includes the template variable for django to create the necessary fields to automatically display the form. -->
+    <!-- The as_p modifier tells django to render all the form elements in paragraph format. -->
     {{ form.as_p }}
     <button name='submit'>Add comment</button>
 </form>
 
 {% endblock content %}
 <!-- This indicates the we're finished defining the content in the block. -->
+
+<!-- Once you have created the template in the fourth phase, you will need to link the html page on another page you desire. -->
