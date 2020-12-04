@@ -1,5 +1,7 @@
 <!-- Templates define what the page should look like  -->
 
+<!-- The base.html file contains elements common to all pages; every other template will inherit from base.html. (parent template) -->
+
 <!-- Load the collection of template tags available in bootstrap4. -->
 {% load bootstrap4 %}
 
@@ -22,18 +24,25 @@
     </head>
     <!-- Opens the body tag. -->
     <body>
-        <!-- Indicates the page's navigation links section. -->
+        <!-- Indicates the page's navigation links section. 
+            Everything contained in this element is styled according to the bootstrap style rules defined by the navbar selectors. -->
         <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">
-            <!-- Sets the project's name to appear at the far left of the navigation bar and make it a link to the home page. -->
+            <!-- Sets the project's name to appear at the far left of the navigation bar and make it a link to the home page.
+            This appears on every page of the project. The navbar-brand selector styles this link to stand out from the rest of the links. -->
             <a class="navbar-brand" href="{% url 'pizzas:index' %}">
                 Pizzeria</a>
-            <!-- Defines a button that appears if the browser window is too narrow to display the whole navigation bar horizontally. -->
+            <!-- Defines a button that appears if the browser window is too narrow to display the whole navigation bar horizontally.
+            When the user clicks the button, the navigation elements will appear in a drop-down list. The collapse reference causes 
+            the navigation bar to collapse when the user shrinks the browser window or when the site is displayed on smaller screens. -->
             <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarCollapse" aria-controls="navbarCollapse"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span></button>
-            <!-- Opens a new section of the nav bar. Builds a web page by dividing it into sections and defining style and behavior rules that apply to that section. -->
+            <!-- Opens a new section of the nav bar. Builds a web page by dividing it into sections and defining style and behavior rules that apply to that section. 
+            The div function builds a web page by dividing it into sections and defining style and behavior rules that apply in the section. -->
             <div class="collapse navbar-collapse" id="navbarCollapse">
+                <!-- Define a new set of links. Bootstrap defines navigation elements as items in an unordered list with style rules. Every link or element
+                you need on the bar can be included as an item in one of these lists. -->
                 <ul class="navbar-nav mr-auto">
                     <!-- The only item in the list is our link to the Pizzas page. -->
                     <li class="nav-item">
@@ -42,13 +51,15 @@
                 </ul>
             </div>
         </nav>
-        <!-- Used for the most significant part of the body of a page. -->
+        <!-- Used for the most significant part of the body of a page. The container selector is a simple way to group elements on a page. -->
         <main role="main" class="container">
-            <!-- This block will be used to title most pages. -->
+            <!-- This block will be used to title most pages and provide padding below the header. Padding refers to the sapce between 
+            an element's content and its border, the border-bottom selector provides a thin border at the bottom of page_header block. -->
             <div class="pb-2 mb-2 border-bottom">
                 {% block page_header %} {% endblock page_header %}
             </div>
-            <!-- This div element contains the block element. -->
+            <!-- This div element contains the block content. Doesn't add a specific style to this block, which allows for styling the content
+            of any page as we see fit for that page. -->
             <div>
                 {% block content %} {% endblock content %}
             </div>

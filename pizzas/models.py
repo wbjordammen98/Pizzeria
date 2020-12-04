@@ -37,6 +37,6 @@ class Topping(models.Model):
         return f"{self.text[:50]}..."
 
 # Once you are finished defining your model, migrate the model using the following terminial commands:
-    # In an active venv, type: python manage.py makemigrations app_name (Pizzas)
+    # In an active venv, type: python manage.py makemigrations app_name (pizzas)
     # Next, type python manage.py migrate.
     # Lastly, don't forget to register the model with the admin site in admin.py.

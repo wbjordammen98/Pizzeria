@@ -1,3 +1,4 @@
+# Render function returns a requested page. Redirect function sends another request to the given url.
 from django.shortcuts import render, redirect
 
 # Import the model associated with the data it needs.
